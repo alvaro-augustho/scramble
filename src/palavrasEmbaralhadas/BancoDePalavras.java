@@ -16,6 +16,8 @@ public class BancoDePalavras {
 	private static final Random randomGenerator = new Random();
 	private static final ArrayList<String> listaDePalavras;
 	
+	// inicializacao estatica para garantir que o arquivo sera
+	// lido na memoria apenas uma vez
 	static {
 		BufferedReader in = null;
 		try {
@@ -38,6 +40,7 @@ public class BancoDePalavras {
 		}
 	}
 	
+	// retorna uma palavra aleatoriamente
 	public static String retornarPalavra() {
 		int r = randomGenerator.nextInt(listaDePalavras.size());
 		try {

@@ -6,23 +6,25 @@ import palavrasEmbaralhadas.factory.FabricaEmbaralhadores;
 
 public class MecanicaNormal implements MecanicaDoJogo {
 
-	private static final int pontosAcerto = 5;
+	/*
+	 * - ate tres erros
+	 * - cada acerto vale 5 pontos x multiplicador de dificuldade do embaralhador
+	 */
+	
+	private static final int PONTOS_ACERTO = 5;
 	private int tentativas;
 	private int pontuacao;
 	private Embaralhador embaralhador;
 	
-	@Override
-	public String toString() {
-		return "Jogo normal:\n"
-				+ "* Você pode errar até 3 vezes\n"
-				+ "* Cada acerto vale 5 pontos\n"
-				+ embaralhador.toString()
-				+ "\n\n";
+	public MecanicaNormal() {
+		this.embaralhador = FabricaEmbaralhadores.constroiEmbaralhador();
+		this.tentativas = 3;
+		this.pontuacao = 0;
 	}
 	
 	public boolean checaTentativa(String palavra, String tentativa) {
 		if(palavra.equalsIgnoreCase(tentativa)) {
-			this.pontuacao+=(embaralhador.getMultiplicadorDificuldade()*pontosAcerto);
+			this.pontuacao+=(embaralhador.getMultiplicadorDificuldade()*PONTOS_ACERTO);
 			System.out.println("Parabéns! Você acertou!");
 			System.out.println("Pontuação atual: "+pontuacao+" pontos");
 			return true;
@@ -53,17 +55,18 @@ public class MecanicaNormal implements MecanicaDoJogo {
 		return this.embaralhador.embaralha(palavra);
 	}
 	
-	public MecanicaNormal() {
-		this.embaralhador = FabricaEmbaralhadores.constroiEmbaralhador();
-		this.tentativas = 3;
-		this.pontuacao = 0;
-	}
-	
 	public void reiniciaJogo() {
 		this.tentativas = 3;
 		this.pontuacao = 0;
 	}
 	
-	
-	
+	@Override
+	public String toString() {
+		return "Jogo normal:\n"
+				+ "* Você pode errar até 3 vezes\n"
+				+ "* Cada acerto vale "+PONTOS_ACERTO+" pontos\n"
+				+ embaralhador.toString()
+				+ "\n\n";
+	}
+
 }

@@ -19,6 +19,7 @@ public class FabricaMecanicaDoJogo {
 	private static final int SIZE = VALUES.size();
 	private static final Random RANDOM = new Random();
 		
+	// retorna uma mecanica de jogo aleatoriamente
 	public static MecanicaDoJogo constroiMecanicaDoJogo() {
 		Mecanicas m = getRandomImpl();
 		

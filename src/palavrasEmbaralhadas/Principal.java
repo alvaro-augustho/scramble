@@ -15,7 +15,7 @@ public class Principal {
 		System.out.println(mecanica);
 
 		boolean naoSairJogo = true;
-		while (naoSairJogo) {
+		while (naoSairJogo) { // loop ate o jogador decidir parar
 			try {
 				String palavra = BancoDePalavras.retornarPalavra();
 				String palavraEmbaralhada = mecanica.embaralhaPalavra(palavra);

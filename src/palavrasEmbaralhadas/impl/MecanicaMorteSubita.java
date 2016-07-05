@@ -6,22 +6,23 @@ import palavrasEmbaralhadas.factory.FabricaEmbaralhadores;
 
 public class MecanicaMorteSubita implements MecanicaDoJogo {
 
-	private static final int pontosAcerto = 20;
+	/*
+	 * - acaba no primeiro erro
+	 * - cada acerto vale 20 pontos x multiplicador de dificuldade do embaralhador
+	 */
+	
+	private static final int PONTOS_ACERTO = 20;
 	private int pontuacao;
 	private Embaralhador embaralhador;
-	
-	@Override
-	public String toString() {
-		return "Jogo de morte subita:\n"
-				+ "* Errou, acabou\n"
-				+ "* Cada acerto vale "+pontosAcerto+" pontos\n"
-				+ embaralhador.toString()
-				+ "\n\n";
+
+	public MecanicaMorteSubita() {
+		this.embaralhador = FabricaEmbaralhadores.constroiEmbaralhador();
+		this.pontuacao = 0;
 	}
 	
 	public boolean checaTentativa(String palavra, String tentativa) {
 		if(palavra.equalsIgnoreCase(tentativa)) {
-			this.pontuacao+=(embaralhador.getMultiplicadorDificuldade()*pontosAcerto);
+			this.pontuacao+=(embaralhador.getMultiplicadorDificuldade()*PONTOS_ACERTO);
 			System.out.println("Parabéns! Você acertou!");
 			System.out.println("Pontuação atual: "+pontuacao+" pontos");
 			return true;
@@ -41,13 +42,17 @@ public class MecanicaMorteSubita implements MecanicaDoJogo {
 		return this.embaralhador.embaralha(palavra);
 	}
 	
-	public MecanicaMorteSubita() {
-		this.embaralhador = FabricaEmbaralhadores.constroiEmbaralhador();
+	public void reiniciaJogo() {
 		this.pontuacao = 0;
 	}
 	
-	public void reiniciaJogo() {
-		this.pontuacao = 0;
+	@Override
+	public String toString() {
+		return "Jogo de morte subita:\n"
+				+ "* Errou, acabou\n"
+				+ "* Cada acerto vale "+PONTOS_ACERTO+" pontos\n"
+				+ embaralhador.toString()
+				+ "\n\n";
 	}
 	
 }

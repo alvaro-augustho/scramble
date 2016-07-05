@@ -19,6 +19,7 @@ public class FabricaEmbaralhadores {
 	private static final int SIZE = VALUES.size();
 	private static final Random RANDOM = new Random();
 		
+	// retorna um embaralhador aleatoriamente
 	public static Embaralhador constroiEmbaralhador() {
 		Embaralhadores e = getRandomImpl();
 		
