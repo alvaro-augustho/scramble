@@ -11,7 +11,7 @@ import java.util.Random;
 public class FabricaEmbaralhadores {
 
 	private static enum Embaralhadores {
-		reverse, scramble
+		reverso, shuffle
 	}
 	
 	private static final List<Embaralhadores> VALUES =
@@ -24,10 +24,10 @@ public class FabricaEmbaralhadores {
 		
 		switch(e) {
 			
-			case reverse:
+			case reverso:
 				return new EmbaralhadorReverso();
 								
-			case scramble:
+			case shuffle:
 				return new EmbaralhadorShuffle();
 				
 			default:

@@ -6,9 +6,9 @@ import palavrasEmbaralhadas.factory.FabricaEmbaralhadores;
 
 public class MecanicaMorteSubita implements MecanicaDoJogo {
 
-	int pontosAcerto = 20;
-	int pontuacao;
-	Embaralhador embaralhador;
+	private static final int pontosAcerto = 20;
+	private int pontuacao;
+	private Embaralhador embaralhador;
 	
 	@Override
 	public String toString() {

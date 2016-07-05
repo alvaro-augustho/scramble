@@ -7,7 +7,7 @@ import palavrasEmbaralhadas.Embaralhador;
 
 public class EmbaralhadorShuffle implements Embaralhador {
 
-	static final int multiplicadorDificuldade = 4;
+	private static final int multiplicadorDificuldade = 4;
 	
 	public String embaralha(String palavra) {
 		List<Character> characters = new ArrayList<Character>();
@@ -23,7 +23,7 @@ public class EmbaralhadorShuffle implements Embaralhador {
 	}
 	
 	public int getMultiplicadorDificuldade() {
-		return this.multiplicadorDificuldade;
+		return multiplicadorDificuldade;
 	}
 		
 	@Override
